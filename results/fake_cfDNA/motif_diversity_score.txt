@@ -1,0 +1,2 @@
+5' End Motif Diversity Score: 0.9181
+3' End Motif Diversity Score: 0.9186
