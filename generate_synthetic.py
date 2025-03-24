@@ -1,5 +1,5 @@
 # Define the path for the BAM file and the reference name
-bam_path = 'cfdx/bam/fake_cfDNA.bam'
+bam_path = 'bam/fake_cfDNA.bam'
 ref_name = 'chr1'
 
 # Define the header for the BAM file
