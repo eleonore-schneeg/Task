@@ -15,4 +15,4 @@ for bam_file in glob.glob(os.path.join(bam_dir, '*.bam')):
     output_bam = os.path.join(bam_results_dir, f'{base_name}.processed.bam')
     reference_fasta = 'cfdx/hg19.fa'
 
-    subprocess.run(['python', 'cfdx/fragment_analysis.py', '--input', bam_file, '--output', output_bam, '--output_dir', bam_results_dir, '--reference', reference_fasta, '--kmer', '3'])
+    subprocess.run(['python', 'cfdx/fragment_analysis.py', '--input', bam_file, '--output', output_bam, '--output_dir', bam_results_dir, '--reference', reference_fasta, '--kmer', '3', '--min_quality', '10', '--min_length', '30'])

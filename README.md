@@ -1,21 +1,22 @@
 
 # Fragment End Analysis Module
 
-This module performs fragment end analysis on cell-free DNA (cfDNA) from BAM files. It extracts key fragmentomic signals relevant to cancer detection.
+This module performs fragment end analysis on cell-free DNA (cfDNA) from BAM files. It filters reads based on quality and length criteria, and extracts key fragmentomic signals relevant to cancer detection.
 
 
 ## Steps
 1. Read BAM file and extract fragment lengths, start and end positions.
 2. If reference genome is provided, extract k-mers from fragment ends.
-3. Calculate motif diversity score (MDS) using normalized Shannon entropy.
-4. Normalize motif counts to background and calculate enrichment.
-5. Generate summary statistics and save to CSV.
-6. Generate and save plots for visualization.
+3. Filter reads based on quality and length criteria.
+4. Calculate motif diversity score (MDS) using normalized Shannon entropy.
+5. Normalize motif counts to background and calculate enrichment.
+6. Generate summary statistics and save to CSV.
+7. Generate and save plots for visualization.
 
 ## Features
 - Input files: BAM file, reference genome FASTA file (optional)
   - If no reference is provided, end motif distribution will be skipped.
-- Main parameters: k-mer length
+- Main parameters:  minimum quality score, minimum read length,k-mer length
 - Output:
   - `processed.bam`
   - `summary_statistics.csv`

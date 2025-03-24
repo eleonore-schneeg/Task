@@ -7,6 +7,17 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
+def filter_read(read, min_quality=20, min_length=30):
+    """Filter reads that do not meet quality criteria."""
+    if read.query_qualities is None:
+        return False  # No quality scores to filter
+
+    if len(read.query_sequence) < min_length:
+        return False
+    if min(read.query_qualities) < min_quality:
+        return False
+    return True
+
 def motif_diversity_score(motif_counts: dict) -> float:
     total = sum(motif_counts.values())
     if total == 0:
@@ -43,7 +54,7 @@ def plot_mds_vs_enrichment(enrichment_df: pd.DataFrame, title: str, output_file:
     plt.savefig(output_file)
     plt.close()
 
-def analyze_bam(input_bam, output_bam, output_dir, reference_fasta=None, kmer_size=3):
+def analyze_bam(input_bam, output_bam, output_dir, reference_fasta=None, kmer_size=3, min_quality=20, min_length=30):
     bam_in = pysam.AlignmentFile(input_bam, "rb")
     bam_out = pysam.AlignmentFile(output_bam, "wb", template=bam_in)
 
@@ -58,6 +69,9 @@ def analyze_bam(input_bam, output_bam, output_dir, reference_fasta=None, kmer_si
 
     for read in bam_in.fetch(until_eof=True):
         if read.is_unmapped:
+            continue
+
+        if not filter_read(read, min_quality=min_quality, min_length=min_length):
             continue
 
         start = read.reference_start
@@ -140,6 +154,8 @@ if __name__ == "__main__":
     parser.add_argument("--output_dir", required=True, help="Output directory for results")
     parser.add_argument("--reference", required=False, help="Reference FASTA for motif extraction")
     parser.add_argument("--kmer", type=int, default=3, help="Length of k-mer to extract from fragment ends")
+    parser.add_argument("--min_quality", type=int, default=20, help="Minimum quality score for filtering reads")
+    parser.add_argument("--min_length", type=int, default=20, help="Minimum length for filtering reads")
 
     args = parser.parse_args()
-    analyze_bam(args.input, args.output, args.output_dir, args.reference, args.kmer)
+    analyze_bam(args.input, args.output, args.output_dir, args.reference, args.kmer, args.min_quality)
