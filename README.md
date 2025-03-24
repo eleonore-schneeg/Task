@@ -68,7 +68,7 @@ wget http://hgdownload.soe.ucsc.edu/goldenPath/hg19/bigZips/hg19.fa.gz
 
 ## Requirements
 - Python 3.7+
-- `pysam`, `biopython`, `pandas`, `seaborn`, `matplotlib`
+- `pysam`, `pandas`, `seaborn`, `matplotlib`,`numpy`
 
 Install dependencies with:
 ```bash
