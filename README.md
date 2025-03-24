@@ -1,7 +1,7 @@
 
 # Fragment End Analysis Module
 
-This module performs fragment end analysis on cell-free DNA (cfDNA) from BAM files. It filters reads based on quality and length criteria, and extracts key fragmentomic signals relevant to cancer detection.
+This module performs fragment end analysis on cell-free DNA (cfDNA) from BAM files. It filters reads based on quality and length criteria, and extracts key fragmentomic signals.
 
 
 ## Steps
