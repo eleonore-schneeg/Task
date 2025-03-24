@@ -6,8 +6,8 @@ This module performs fragment end analysis on cell-free DNA (cfDNA) from BAM fil
 
 ## Steps
 1. Read BAM file and extract fragment lengths, start and end positions.
-2. If reference genome is provided, extract k-mers from fragment ends.
-3. Filter reads based on quality and length criteria.
+2. Filter reads based on quality and length criteria.
+3. If reference genome is provided, extract k-mers from fragment ends.
 4. Calculate motif diversity score (MDS) using normalized Shannon entropy.
 5. Normalize motif counts to background and calculate enrichment.
 6. Generate summary statistics and save to CSV.
