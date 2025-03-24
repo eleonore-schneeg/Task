@@ -79,9 +79,8 @@ pip install -r requirements.txt
 ## Usage
 
 ```bash
-python fragment_analysis.py --input input.bam --output processed.bam --output_dir results --reference hg38.fa --kmer 3
+python fragment_analysis.py --input input.bam --output processed.bam --output_dir results --reference hg19.fa --kmer 3 --min_quality 20 --min_length 30
 ```
-
 
 ## References
 
